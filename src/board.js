@@ -1,31 +1,5 @@
-/*
-Author: Osvaldo
 
-Terminal-based minesweeper game, requiring that you type code into the terminal to play the game
-*/
-
-class Game {
-    constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-        this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-    }
-
-    playMove(rowIndex, columnIndex) {
-        this._board.flipTile(rowIndex, columnIndex);
-        if (this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-            console.log('GAME OVER!');
-            this._board.print();
-        }
-        else if (!this._board.hasSafeTiles()) {
-            console.log('YOU WON!!!')
-        }
-        else {
-            console.log('Current Board: ');
-            this._board.print();
-        }
-    }
-}
-
-class Board {
+export class Board {
     constructor(numberOfRows, numberOfColumns, numberOfBombs) {
         this._numberOfBombs = numberOfBombs;
         this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -135,19 +109,3 @@ class Board {
     }
 
 }
-
-const g = new Game(3, 3, 3);
-g.playMove(0, 0);
-
-// let playerBoard = generatePlayerBoard(4, 8);
-// let bombBoard = generateBombBoard(4, 8, 7);
-
-// console.log('Player Board: ');
-// printBoard(playerBoard);
-
-// console.log('Bomb Board: ');
-// printBoard(bombBoard);
-
-// flipTile(playerBoard, bombBoard, 0, 0);
-// console.log('Updated Player Board:');
-// printBoard(playerBoard);
